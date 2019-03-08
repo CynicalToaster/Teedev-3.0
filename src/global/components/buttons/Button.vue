@@ -18,24 +18,35 @@
 <template>
   <div
     class="teedev-button"
-    :class="{ 'primary': primary, 'fill': fill, 'loading': loading }"
+    :class="{
+      'primary': primary,
+      'fill': fill,
+      'loading': loading,
+      'only-icon': !text && icon
+    }"
     @click="$emit('click')"
   >
     <teedev-spinner v-if="loading" class="spinner"/>
-    <span class="content">{{text}}</span>
+    <span class="content">
+      <font-awesome-icon v-if="icon" class="mr-2" :icon="icon" />
+      {{text}}
+    </span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'teedev-button',
+
   props: {
     text: String,
     href: String,
     primary: Boolean,
     loading: Boolean,
     fill: Boolean,
+    icon: Object,
   },
+
   theme: $theme => (`
     .teedev-button {
       background-color: ${$theme.colors.highlight};
@@ -57,53 +68,104 @@ export default {
 <style lang="scss" scoped>
 .teedev-button {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
-  padding: calc(0.75rem - 1px) 2em;
+  padding: 1em 2em;
+  background-color: $color-highlight;
+  border-radius: $border-radius;
   cursor: pointer;
 
-  background-color: $color-highlight;
-  border: 1px solid transparent;
-  border-radius: $border-radius;
-  overflow: hidden;
+  transition: background-color $anim-time-s;
   user-select: none;
 
-  .content {
-    font-weight: bold;
-  }
-
-  transition: background-color $anim-time-m, box-shadow $anim-time-m;
-
   &:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0, 0.1);
   }
 
   &.primary {
     color: $color-background;
     background-color: $color-primary;
-    border-color: $color-primary;
 
     &:hover {
       background-color: rgba($color-primary, 0.75);
     }
   }
 
-  &.fill {
-    width: 100%;
-    text-align: center;
-  }
+  .spinner {
+    position: absolute;
 
-  &.loading {
-    .content {
+    ~.content {
       opacity: 0;
     }
+  }
 
-    .spinner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
+  .content {
+    svg {
+      margin-bottom: -1px;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  &.fill {
+    display: flex;
+  }
+
+  &.only-icon {
+    padding: 1em;
+
+    .content svg {
+      margin-right: 0 !important;
     }
   }
 }
+// .teedev-button {
+//   display: inline-flex;
+//   position: relative;
+//   padding: calc(0.75rem - 1px) 2em;
+//   cursor: pointer;
+
+//   background-color: $color-highlight;
+//   border: 1px solid transparent;
+//   border-radius: $border-radius;
+//   overflow: hidden;
+//   user-select: none;
+
+//   transition: background-color $anim-time-m, box-shadow $anim-time-m;
+
+//   &:hover {
+//     background-color: rgba(0,0,0,0.1);
+//   }
+
+//   &.primary {
+//     color: $color-background;
+//     background-color: $color-primary;
+//     border-color: $color-primary;
+
+//     &:hover {
+//       background-color: rgba($color-primary, 0.75);
+//     }
+//   }
+
+//   &.fill {
+//     width: 100%;
+//     text-align: center;
+//   }
+
+//   &.loading {
+//     .content {
+//       opacity: 0;
+//     }
+
+//     .spinner {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       bottom: 0;
+//       right: 0;
+//     }
+//   }
+// }
 </style>

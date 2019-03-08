@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <slot/>
+    <theme theme="default">
+      <slot/>
+    </theme>
   </div>
 </template>
 
 <script>
+import Theme from './Theme';
+
 export default {
   name: 'shell',
+
+  components: {
+    Theme,
+  },
 };
 </script>
 

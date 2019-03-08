@@ -7,4 +7,6 @@ export default {
   FloatingContainer: () => import(/* webpackChunkName: "TeeDevContainers" */ './FloatingContainer'),
   Box: () => import(/* webpackChunkName: "TeeDevContainers" */ './Box'),
   Tile: () => import(/* webpackChunkName: "TeeDevContainers" */ './Tile'),
+
+  FixedSidebar: () => import(/* webpackChunkName: "TeeDevContainers" */ './FixedSidebar'),
 };

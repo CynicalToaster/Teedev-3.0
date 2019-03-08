@@ -3,5 +3,6 @@ export default {
   SvgBox: () => import('./SvgBox'),
   SvgLine: () => import('./SvgLine'),
   SvgText: () => import('./SvgText'),
-  SvgArc: () => import('./SvgArc'),
+  // SvgArc: () => import('./SvgArc'),
+  SvgSector: () => import('./SvgSector'),
 };

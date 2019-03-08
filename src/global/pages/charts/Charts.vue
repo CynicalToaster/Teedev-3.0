@@ -9,25 +9,32 @@
       <teedev-svg-text :x="10" :y="150" text="Testy 123" /> -->
       <!-- <teedev-svg-line :points="[{x: 0, y: 0}, {x: 100, y: 50}]" /> -->
       <!-- <teedev-svg-line :points="[{x: 0, y: 0}, {x: 100, y: 100}]" /> -->
-      <Motion :value="value" tag="g">
-        <teedev-svg-arc slot-scope="props" :x="150" :y="150" :r="50" :a="props.value" />
-      </Motion>
-      <Motion :value="value" tag="g">
-        <teedev-svg-arc
-          slot-scope="props" :x="150" :y="150" :r="50" :s="props.value" :a="props.value" />
-      </Motion>
-      <Motion :value="value" tag="g">
-        <teedev-svg-arc
-          slot-scope="props" :x="150" :y="150" :r="50" :s="props.value * 2" :a="props.value" />
-      </Motion>
-      <Motion :value="value" tag="g">
-        <teedev-svg-arc
-          slot-scope="props" :x="150" :y="150" :r="50" :s="props.value * 3" :a="props.value" />
-      </Motion>
-        <!-- <teedev-svg-arc :x="50" :y="50" :r="50" :a="120" />
-        <teedev-svg-arc :x="50" :y="150" :r="50" :a="250" /> -->
+
+      <teedev-svg-sector
+        :x="150"
+        :y="100"
+        :radius="44"
+        :inner-radius="20"
+        :start-angle="45"
+        :angle="135"
+      />
+      <teedev-svg-sector
+        :x="150"
+        :y="100"
+        :radius="50"
+        :inner-radius="46"
+        :start-angle="45"
+        :angle="135"
+      />
+      <teedev-svg-sector
+        :x="150"
+        :y="100"
+        :radius="18"
+        :inner-radius="14"
+        :start-angle="45"
+        :angle="135"
+      />
     </teedev-svg>
-    <teedev-button text="Click Me" @click.native="onClick"/>
   </div>
 </template>
 

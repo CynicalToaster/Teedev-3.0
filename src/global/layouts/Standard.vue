@@ -1,46 +1,35 @@
 <template>
   <div class="layout-standard">
-    <div class="header">
-      <p>Header</p>
-    </div>
+    <shell-header />
     <div class="content">
       <slot/>
     </div>
-    <div class="footer">
-      <p>Footer</p>
-    </div>
+    <shell-action-bar />
   </div>
 </template>
 
 <script>
+import ShellHeader from '@/global/shell/Header';
+import ShellActionBar from '@/global/shell/ActionBar';
+
 export default {
   name: 'layout-standard',
+
+  components: {
+    ShellHeader,
+    ShellActionBar,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .layout-standard{
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 
-  .header {
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    z-index: 1000;
-    border-bottom: 1px solid #f00;
-    background-color: #fff;
-  }
-
   .content {
-  }
-
-  .footer {
-    position: sticky;
-    bottom: 0;
-    overflow: hidden;
-    z-index: 1000;
-    border-top: 1px solid #00f;
-    background-color: #fff;
+    flex-grow: 1;
   }
 }
 </style>

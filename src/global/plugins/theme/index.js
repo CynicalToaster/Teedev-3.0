@@ -32,7 +32,7 @@ const styles = {
 
   complieCSS(scope, css, theme) {
     if (scope) {
-      return stylis('', this.addThemeScope(css, theme)).replace(/(?<=^|}|\s)((?:\.|#)[\S]+?)({|,|::)/g, `$1[${scope}]$2`);
+      return stylis('', this.addThemeScope(css, theme)).replace(/(?:^|}|\s)((?:\.|#)[\S]+?)({|,|::)/g, `$1[${scope}]$2`);
     }
 
     return stylis('', this.addThemeScope(css, theme));
